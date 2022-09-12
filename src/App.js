@@ -24,13 +24,13 @@ function App() {
 
       const loadedMovies = [];
 
-      for(const key in data){
+      for (const key in data) {
         loadedMovies.push({
           id: key,
           title: data[key].title,
           openingText: data[key].openingText,
           releaseDate: data[key].releaseDate,
-        })
+        });
       }
       // const transformedMovies = data.results.map((movieData) => {
       //   return {
@@ -52,13 +52,16 @@ function App() {
   }, [fetchMoviesHandler]);
 
   async function addMovieHandler(movie) {
-    const response = await fetch("https://vaktest-2c0c9.firebaseio.com/movies.json", {
-      method: "POST",
-      body: JSON.stringify(movie),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
+    const response = await fetch(
+      "https://vaktest-2c0c9.firebaseio.com/movies.json",
+      {
+        method: "POST",
+        body: JSON.stringify(movie),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
     const data = await response.json();
     console.log(data);
   }
